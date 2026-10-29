@@ -1,0 +1,243 @@
+/* 기본 설정 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background: #f7f3ee;
+  color: #333;
+}
+
+/* 헤더와 메뉴 */
+header {
+  text-align: center;
+  padding: 24px 16px 8px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  background: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+/* 구역 공통 */
+main section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+main section h2 {
+  margin-bottom: 12px;
+}
+
+#guide ol {
+  display: inline-block;
+  text-align: left;
+}
+
+/* 뽑기 버튼 */
+#drawBtn {
+  margin-top: 12px;
+  padding: 10px 28px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    #e8643c,
+    #f5c542,
+    #3cc47a,
+    #3c8de8,
+    #a45ce8,
+    #e8643c
+  );
+  background-size: 200% auto;
+  animation: flow 4s linear infinite;
+  color: #fff;
+  cursor: pointer;
+}
+
+#drawBtn:hover {
+  background: #d1522c;
+}
+
+/* 카드 배치 */
+#cardArea {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* 카드 틀 */
+.card {
+  width: 200px;
+  height: 300px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* flipped가 붙으면 앞면이 보이도록 돌아감 */
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* 앞면과 뒷면을 같은 자리에 겹치기 */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 뒷면 */
+.card-back img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 앞면: 처음부터 뒤집어 둠 + 위 이미지 6 : 아래 글 4 */
+.card-front {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.card-front img {
+  flex: 6 1 0;
+  min-height: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-text {
+  flex: 4 1 0;
+  padding: 10px;
+  text-align: center;
+}
+
+.card-text h3 {
+  margin-bottom: 6px;
+}
+
+.card-text p {
+  font-size: 0.9rem;
+}
+
+/* 푸터 */
+footer {
+  padding: 24px;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+span {
+  background: linear-gradient(
+    90deg,
+    #e8643c,
+    #f5c542,
+    #3cc47a,
+    #3c8de8,
+    #a45ce8,
+    #e8643c
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: flow 4s linear infinite;
+}
+
+@keyframes flow {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.card {
+  animation: cardIn 0.5s ease-out both;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(-80px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card.flipped .card-front {
+  animation: glow 0.8s ease-out 0.3s;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  40% {
+    box-shadow:
+      0 0 40px 20px rgba(255, 220, 100, 1),
+      0 0 90px 50px rgba(255, 180, 60, 0.7);
+  }
+  100% {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.card-front::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent,
+    rgba(255, 255, 255, 0.7),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.card.flipped .card-front::after {
+  animation: shine 0.8s ease-out 0.4s;
+}
+
+@keyframes shine {
+  to {
+    left: 160%;
+  }
+}

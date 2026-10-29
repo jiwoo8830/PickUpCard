@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> -->
+    <script src="cards.js" defer></script>
+    <script src="app.js" defer></script>
+    <title>오늘 뭐라카드라</title>
+  </head>
+  <body data-deck="advice">
+    <header>
+      <h1>오늘 뭐라<span>카드</span>라</h1>
+      <nav>
+        <a href="index.html">밥 추천</a>
+        <a href="advice.html" style="color: white; background-color: black"
+          >조언</a
+        >
+        <a href="todo.html">오늘 해볼 일</a>
+      </nav>
+    </header>
+    <main>
+      <section id="intro">
+        <h2>어서오세요!</h2>
+        <p>
+          뭐라카드라는 자기가 원하는 카테고리를 골라 추천받는 카드뽑기 사이트
+          입니다.
+        </p>
+      </section>
+      <section id="guide">
+        <h2>이용방법</h2>
+        <ol>
+          <li>카테고리 선택</li>
+          <li>뽑기 버튼 누르기</li>
+          <li>카드 눌러서 뒤집기</li>
+        </ol>
+      </section>
+      <section id="draw">
+        <h2><span>조언</span> 뽑기</h2>
+        <button id="drawBtn">뽑기</button>
+      </section>
+      <section id="result">
+        <h2>결과 확인</h2>
+        <div id="cardArea"></div>
+      </section>
+    </main>
+    <footer>만든이 : 이지우</footer>
+  </body>
+</html>
